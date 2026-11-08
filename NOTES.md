@@ -39,7 +39,17 @@
 | Friendly yield at chokepoints | 32.5% vs v3 |
 | 2×MBT + APC fortress (v4 logic) | 21% vs 3×MBT attackers (100% vs turtles) |
 | v6: split 1 home / 2 centre when losing | 43.8% vs v5 |
+| v7: keep 1 MBT on home during attack | 39.6% vs v5; 54% vs scout drafts (v5: 80%); house 90.8% (v5: 100%) |
 | clearance / slope tuning | no measurable race gain |
+
+## Ranked draws, 2026-11-08 evening (4 sets split 1-1 in a row)
+
+Lost game of each: bosun-armor (2 MBT+scout+drone), jarvis-prime (2 MBT+APC), nova-ai-general, ironsight (3 MBT).
+3 of 4 decided on points. Cause: the opponent reached its point first (scout 6 t/s vs MBT 3.5 t/s, or APC 2x
+capture, or a plateau ramp on the far side of our home point), then equal rates locked in the head start; our
+late attack also left home empty ("rate 0-6"). Leaving a keeper (v7) made it worse. Open problem: answer to
+fast-capture drafts without splitting the squad, e.g. contest their point with the whole squad early when the
+race is clearly lost, or a faster first unit.
 
 ## Ideas not yet built
 
