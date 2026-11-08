@@ -1,0 +1,11 @@
+# SDK files are downloaded fresh (tools/fetch-sdk.sh), not committed
+tools/arena-sim.mjs
+tools/local-test.mjs
+# replays and scratch output
+replays/
+*.jsonl
+out/
+# never commit credentials
+*.key
+key
+.env
