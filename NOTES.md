@@ -43,6 +43,7 @@ Version ratings 2026-11-10: v8 1792 (cup 27-22-16), v5 1639 (cup 17-20-18).
 | 2×MBT + APC fortress (v4 logic) | 21% vs 3×MBT attackers (100% vs turtles) |
 | v6: split 1 home / 2 centre when losing | 43.8% vs v5 |
 | v9 (on v5): engine-exact direct-shell check + fire only if clear + no blind fire | 50% / 46.9% vs v5 (24 seeds ×2, two seed sets); house 95.8% (v5 100%); 82 ticks >0.8 ms. Rejected. |
+| v10 (on v9): alarm when enemy leaves its point/stops scoring, ambush slots facing the predicted arrival point, first-volley sync | local 50-56% vs v9, 52% vs v5, house 95.8%; **bench 33% vs live v8**. Rejected: predicted route was wrong (v8 came via the centre), ambush stance faced away so v8's first volley hit rear armor (41 dmg); alarm fired in 29/32 local games (too sensitive). Lesson: never turn hulls away from the real threat axis for a predicted one; any ambush must face every plausible approach or rely on actual sightings. |
 | v7: keep 1 MBT on home during attack | 39.6% vs v5; 54% vs scout drafts (v5: 80%); house 90.8% (v5: 100%) |
 | clearance / slope tuning | no measurable race gain |
 
@@ -69,6 +70,7 @@ move self-play (v9), so the gap is probably positioning (where we stand when we 
 |---|---|---|---|---|
 | mdeg-lab v9 | 13-10-1 | 56.2% | **97%** | 73% |
 | mdeg-armor v5 (control) | 15-9-0 | 62.5% | 79% | 74% |
+| mdeg-lab v10 (seeds from 920000) | 8-16-0 | **33.3%** | 95% | 72% |
 
 v9's exact shot check nearly eliminates misses but does not turn into more wins. The control beating v8 62.5%
 while v8 out-rates v5 on the ladder (1792 vs 1639) shows how noisy 24 games are (±~20% at 95%) and that

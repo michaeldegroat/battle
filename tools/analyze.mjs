@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { verifyReplay, decodeReplay, rulesFor } from "./arena-sim.mjs";
 const r = decodeReplay(readFileSync(process.argv[2], "utf8"));
-const me = r.header.bots.findIndex(b => (b.name === "mdeg-armor" || b.name === "you"));
+const me = r.header.bots.findIndex(b => (b.name === "mdeg-armor" || b.name === "you" || b.name === "mdeg-lab"));
 const every = Number(process.argv[3] || 40);
 const v = verifyReplay(r, { rules: rulesFor(r.header.rulesVersion) });
 console.log("verify", v.ok, "me side", me, "drafts", JSON.stringify(r.header.drafts), "result", JSON.stringify(r.result));
