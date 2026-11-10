@@ -63,6 +63,17 @@ ticks. Fight accuracy: we hit 70% of shots, opponents 86% (similar shot counts, 
 terrain). Hit rate falls with range: <12 tiles 76%, 12–20 65%, 20+ 56%. Fixing the shot check alone did not
 move self-play (v9), so the gap is probably positioning (where we stand when we shoot), not the fire decision.
 
+## Bench 2026-11-10 (12 maps = 24 games each, vs live v8)
+
+| Candidate | W-L-D | Score | Our hit rate | v8 hit rate |
+|---|---|---|---|---|
+| mdeg-lab v9 | 13-10-1 | 56.2% | **97%** | 73% |
+| mdeg-armor v5 (control) | 15-9-0 | 62.5% | 79% | 74% |
+
+v9's exact shot check nearly eliminates misses but does not turn into more wins. The control beating v8 62.5%
+while v8 out-rates v5 on the ladder (1792 vs 1639) shows how noisy 24 games are (±~20% at 95%) and that
+version ratings are confounded by when each version played. Use 24+ maps before promoting anything.
+
 ## Ideas not yet built
 
 - Drone spotter (36-tile sensor) + MBTs firing from 21–29 tiles (beyond enemy MBT sight of 20).
