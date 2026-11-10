@@ -2,7 +2,10 @@
 
 ## Live version
 
-**v5** (uploaded 2026-11-08). Draft 3×MBT.
+**v8** (uploaded 2026-11-09 20:28 UTC by a scheduled run that could not push). **Its source is NOT in this repo**
+and the API cannot return it; `bot/current.js` is still v5. Uploading anything retires v8 permanently (no
+rollback endpoint), so do not upload until v8 is recovered into `bot/versions/v8.js`, or Michael approves.
+Version ratings 2026-11-10: v8 1792 (cup 27-22-16), v5 1639 (cup 17-20-18).
 
 ## How the controller works (v5)
 
@@ -39,6 +42,7 @@
 | Friendly yield at chokepoints | 32.5% vs v3 |
 | 2×MBT + APC fortress (v4 logic) | 21% vs 3×MBT attackers (100% vs turtles) |
 | v6: split 1 home / 2 centre when losing | 43.8% vs v5 |
+| v9 (on v5): engine-exact direct-shell check + fire only if clear + no blind fire | 50% / 46.9% vs v5 (24 seeds ×2, two seed sets); house 95.8% (v5 100%); 82 ticks >0.8 ms. Rejected. |
 | v7: keep 1 MBT on home during attack | 39.6% vs v5; 54% vs scout drafts (v5: 80%); house 90.8% (v5: 100%) |
 | clearance / slope tuning | no measurable race gain |
 
@@ -50,6 +54,14 @@ capture, or a plateau ramp on the far side of our home point), then equal rates 
 late attack also left home empty ("rate 0-6"). Leaving a keeper (v7) made it worse. Open problem: answer to
 fast-capture drafts without splitting the squad, e.g. contest their point with the whole squad early when the
 race is clearly lost, or a faster first unit.
+
+## v8 losses, 2026-11-10 (40 non-win sets, tools/misses.mjs)
+
+89 of 96 lost games were vs 3×MBT and ended by elimination; the race to the point was usually within a few
+ticks. Fight accuracy: we hit 70% of shots, opponents 86% (similar shot counts, ~27 dmg per hit). Blind fire
+(target not visible): 15% of shots, 38% hit. Well-aimed shots at visible targets: 76% hit (24% presumably stopped by
+terrain). Hit rate falls with range: <12 tiles 76%, 12–20 65%, 20+ 56%. Fixing the shot check alone did not
+move self-play (v9), so the gap is probably positioning (where we stand when we shoot), not the fire decision.
 
 ## Ideas not yet built
 
