@@ -80,10 +80,16 @@ move self-play (v9), so the gap is probably positioning (where we stand when we 
 
 ## Procedure for an improvement run
 
-1. `bash tools/fetch-sdk.sh`; `bash tools/losses.sh 100` (record per version + replays of non-wins).
-2. For each non-win: `node tools/analyze.mjs replays/<id>-<g>.jsonl 50`; find the cause.
-3. Change a copy (`bot/versions/vN+1.js`), add a `CFG` switch for the new behavior.
-4. Accept only if: house bots ≥ current (`node tools/local-test.mjs <file> --seeds 15 --quiet`),
-   self-play vs `bot/current.js` ≥ 55% on ≥ 24 seeds, no tick errors, `--profile` tick p99 < 0.5 ms.
-5. Upload with `tools/upload.sh`, copy to `bot/current.js`, update this file, commit, push.
-6. Optional: 1–3 scrimmages vs the top bots on new seeds (`tools/scrim.sh`), log the result.
+Test bench: the account's second bot **mdeg-lab** (not in the cup) holds candidates. `tools/bench.sh mdeg-lab <label> 12`
+plays it against the live mdeg-armor on 12 fixed maps (24 games, unrated). `tools/bench.sh mdeg-armor <old label> 12` is a
+control (an older stored version of the cup bot vs the live one). 60 scrimmages per account per day.
+
+1. `bash tools/fetch-sdk.sh`; `bash tools/losses.sh 100`; check `git push --dry-run origin HEAD:main` works.
+2. For non-wins: `node tools/analyze.mjs replays/<id>-<g>.jsonl 50`, `node tools/misses.mjs replays/*.jsonl`.
+3. Build `bot/versions/vN+1.js` on the newest version whose source is here, new behavior behind a `CFG` switch.
+4. Local gate: house bots ≥ current (`--seeds 15`), no tick errors, profile tick p99 < 0.5 ms, self-play vs
+   `bot/current.js` ≥ 50% on ≥ 24 seeds.
+5. Bench gate: `BOT=mdeg-lab bash tools/upload.sh FILE vN+1`, then `bash tools/bench.sh mdeg-lab vN+1 12`.
+   Promote only at ≥ 58% over ≥ 24 games, and only after the source is committed and pushed.
+6. Promote: `bash tools/upload.sh FILE vN+1` (cup bot), copy to `bot/current.js`, update this file, commit, push.
+   Every upload to mdeg-armor permanently retires the previous version: there is no rollback.

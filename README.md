@@ -18,6 +18,8 @@ Controller for the bot **mdeg-armor** on [battle.training](https://battle.traini
 | `tools/trace.mjs`, `dbg.mjs`, `geo.mjs` | Unit-by-unit trace of a local match, ASCII terrain dump, objective geometry per seed. |
 | `tools/upload.sh <file> <label>` | Uploads a version (smoke-tested; becomes active immediately, also in the cup). |
 | `tools/scrim.sh <seed> <bot>...` | Unrated scrimmages (5/min, 60/day). `tools/poll.sh <ids>` waits and downloads replays. |
+| `tools/bench.sh <bot> <label> <maps>` | Scrimmages a stored version (normally on mdeg-lab) against the live mdeg-armor and tallies games and hit rates. |
+| `tools/misses.mjs <replays>` | Hit/miss breakdown of our main-gun shots (visible vs blind, range, lead error). |
 | `tools/losses.sh [n]` | Recent ranked sets, record per version, downloads replays of non-wins to `replays/`. |
 
 ## Auth
